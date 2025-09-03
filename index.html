@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Usuário</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0e0e0e;
+      color: #e0d4ff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 36px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #b388ff;
+      text-shadow:
+        0 0 5px #b388ff,
+        0 0 10px #b388ff,
+        0 0 20px #9575cd,
+        0 0 30px #7e57c2;
+      animation: neon-glow 2s ease-in-out infinite alternate;
+      margin-bottom: 30px;
+    }
+
+    @keyframes neon-glow {
+      from {
+        text-shadow:
+          0 0 5px #b388ff,
+          0 0 10px #b388ff,
+          0 0 20px #9575cd,
+          0 0 30px #7e57c2;
+      }
+      to {
+        text-shadow:
+          0 0 10px #d1c4e9,
+          0 0 20px #d1c4e9,
+          0 0 30px #9575cd,
+          0 0 50px #7e57c2;
+      }
+    }
+
+    form {
+      background-color: #141220;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 1200px;
+      margin: 0 auto;
+      box-shadow: 0 0 20px #5e35b1, 0 0 40px #5e35b1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .form-group {
+      flex: 1 1 45%;
+      min-width: 280px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      color: #d1c4e9;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      background-color: #141220;
+      border: 1px solid #7e57c2;
+      color: #ffffff;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #7e57c2;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #9575cd, 0 0 20px #9575cd;
+      border-color: #9575cd;
+    }
+
+    .full-width {
+      flex: 1 1 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    button {
+      padding: 15px 40px;
+      background-color: #7e57c2;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0 0 12px #b388ff, 0 0 20px #b388ff;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    button:hover {
+      background-color: #9575cd;
+      box-shadow: 0 0 18px #d1c4e9, 0 0 28px #d1c4e9;
+    }
+  </style>
+</head>
+<body>
+  <h2>Formulário de Cadastro</h2>
+  <form action="/cadastrar" method="post">
+    <div class="form-group">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome">
+    </div>
+
+    <div class="form-group">
+      <label for="cpf">CPF:</label>
+      <input type="text" id="cpf" name="cpf">
+    </div>
+
+    <div class="form-group">
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email">
+    </div>
+
+    <div class="form-group">
+      <label for="cep">CEP:</label>
+      <input type="text" id="cep" name="cep">
+    </div>
+
+    <div class="form-group">
+      <label for="rua">Rua:</label>
+      <input type="text" id="rua" name="rua">
+    </div>
+
+    <div class="form-group">
+      <label for="numero">Número:</label>
+      <input type="text" id="numero" name="numero">
+    </div>
+
+    <div class="form-group">
+      <label for="bairro">Bairro:</label>
+      <input type="text" id="bairro" name="bairro">
+    </div>
+
+    <div class="form-group">
+      <label for="cidade">Cidade:</label>
+      <input type="text" id="cidade" name="cidade">
+    </div>
+
+    <div class="form-group">
+      <label for="estado">Estado:</label>
+      <input type="text" id="estado" name="estado">
+    </div>
+
+    <div class="form-group">
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha">
+    </div>
+
+    <div class="form-group full-width">
+      <button type="submit">Cadastrar</button>
+    </div>
+  </form>
+</body>
+</html>
