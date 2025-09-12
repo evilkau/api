@@ -1,0 +1,40 @@
+const form = document.getElementById("form-cliente")
+const btnEnviar = document.getElementById("btn-enviar")
+
+form.addEventListener("submit", async(event)=>{
+    event.preventDefault()
+    const dados = pegarDadosCliente();
+    try {
+        const resposta = await fetch(
+
+            "http://127.0.0.1:3002/cadastro",{
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(dados)
+        }
+        )
+        if (!resposta.ok) {
+            throw new Error("Erro na API")
+        }
+        alert("Cliente cadastrado com sucesso!")
+        form.reset()
+    } catch {
+        alert("Erro ao cadastrar")
+    }
+
+})
+function pegarDadosCliente(){
+    let cliente = new Object()
+    cliente.nome_completo = document.getElementById("nome_completo").value;
+    cliente.cpf = document.getElementById("cpf").value;
+    cliente.estado = document.getElementById("estado").value;
+    cliente.cidade = document.getElementById("cidade").value;
+    cliente.bairro = document.getElementById("bairro").value;
+    cliente.n_casa = document.getElementById("n_casa").value;
+    cliente.rua = document.getElementById("rua").value;
+    cliente.cep = document.getElementById("cep").value;
+    cliente.email = document.getElementById("email").value;
+    cliente.telefone = document.getElementById("telefone").value;
+    cliente.senha = document.getElementById("senha").value;
+    return cliente;
+}

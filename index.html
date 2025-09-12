@@ -1,235 +1,279 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Cadastro de Usuário</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastro de Clientes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      background-color: #0e0e0e;
-      color: #e0d4ff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: #f8f9fa;
+      background: linear-gradient(135deg, #0d1117, #161b22);
+      min-height: 100vh;
     }
 
     header {
-      background-color: #141220;
-      padding: 20px 0;
-      box-shadow: 0 0 15px #5e35b1;
-      margin-bottom: 30px;
-    }
-
-    .navbar ul {
-      list-style: none;
+      background-color: #21262d;
+      padding: 20px 30px;
       display: flex;
-      justify-content: center;
-      gap: 40px;
-      padding: 0;
-      margin: 0;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #0d6efd;
     }
 
-    .navbar a {
-      text-decoration: none;
-      color: #b388ff;
+    .logo-title {
+      font-size: 2rem;
       font-weight: bold;
-      font-size: 18px;
-      text-transform: uppercase;
+      color: #f8f9fa;
+    }
+
+    nav a {
+      color: #adb5bd;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
       transition: color 0.3s;
     }
 
-    .navbar a i {
-      margin-right: 8px;
+    nav a:hover {
+      color: #0d6efd;
     }
 
-    .navbar a:hover {
-      color: #d1c4e9;
-      text-shadow: 0 0 10px #9575cd, 0 0 20px #9575cd;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 36px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #b388ff;
-      text-shadow:
-        0 0 5px #b388ff,
-        0 0 10px #b388ff,
-        0 0 20px #9575cd,
-        0 0 30px #7e57c2;
-      animation: neon-glow 2s ease-in-out infinite alternate;
-      margin-bottom: 30px;
-    }
-
-    @keyframes neon-glow {
-      from {
-        text-shadow:
-          0 0 5px #b388ff,
-          0 0 10px #b388ff,
-          0 0 20px #9575cd,
-          0 0 30px #7e57c2;
-      }
-      to {
-        text-shadow:
-          0 0 10px #d1c4e9,
-          0 0 20px #d1c4e9,
-          0 0 30px #9575cd,
-          0 0 50px #7e57c2;
-      }
-    }
-
-    form {
-      background-color: #141220;
+    .container {
+      margin-top: 40px;
+      max-width: 900px;
+      background-color: #21262d;
       padding: 30px;
-      border-radius: 10px;
-      max-width: 1200px;
-      margin: 0 auto;
-      box-shadow: 0 0 20px #5e35b1, 0 0 40px #5e35b1;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: space-between;
-    }
-
-    .form-group {
-      flex: 1 1 45%;
-      min-width: 280px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #0d6efd55;
     }
 
     label {
-      display: block;
-      font-weight: bold;
-      color: #d1c4e9;
-      margin-bottom: 5px;
+      color: #f8f9fa;
     }
 
-    label i {
-      margin-right: 8px;
-      color: #b388ff;
+    input.form-control {
+      background-color: #2d333b;
+      border: 1px solid #444c56;
+      color: #f8f9fa;
     }
 
-    input {
-      width: 100%;
-      padding: 10px;
-      background-color: #141220;
-      border: 1px solid #7e57c2;
-      color: #ffffff;
-      border-radius: 5px;
-      box-shadow: 0 0 5px #7e57c2;
+    input.form-control:focus {
+      background-color: #353b45;
+      border-color: #0d6efd;
+      box-shadow: 0 0 8px #0d6efd;
     }
 
-    input:focus {
-      outline: none;
-      box-shadow: 0 0 10px #9575cd, 0 0 20px #9575cd;
-      border-color: #9575cd;
-    }
-
-    .full-width {
-      flex: 1 1 100%;
-      display: flex;
-      justify-content: center;
-    }
-
-    button {
-      padding: 15px 40px;
-      background-color: #7e57c2;
+    button.btn-primary {
+      background-color: #0d6efd;
       border: none;
-      color: white;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      box-shadow: 0 0 12px #b388ff, 0 0 20px #b388ff;
-      transition: background-color 0.3s, box-shadow 0.3s;
+      transition: background-color 0.3s;
     }
 
-    button i {
-      margin-right: 8px;
-    }
-
-    button:hover {
-      background-color: #9575cd;
-      box-shadow: 0 0 18px #d1c4e9, 0 0 28px #d1c4e9;
+    button.btn-primary:hover {
+      background-color: #0b5ed7;
     }
   </style>
 </head>
 <body>
 
+  <!-- TOPO -->
   <header>
-    <nav class="navbar">
-      <ul>
-        <li><a href="/inicio"><i class="fas fa-home"></i> Início</a></li>
-        <li><a href="/login"><i class="fas fa-sign-in-alt"></i> Logar</a></li>
-        <li><a href="/produtos"><i class="fas fa-box-open"></i> Produto</a></li>
-      </ul>
+    <div class="logo-title">Cadastro de Clientes</div>
+    <nav>
+      <a href="#">Dashboard</a>
+      <a href="#">Clientes</a>
+      <a href="#">Configurações</a>
     </nav>
   </header>
 
-  <h2>Formulário de Cadastro</h2>
-  <form action="/cadastrar" method="post">
-    <div class="form-group">
-      <label for="nome"><i class="fas fa-user"></i>Nome:</label>
-      <input type="text" id="nome" name="nome">
-    </div>
+  <!-- FORMULÁRIO -->
+  <div class="container mt-5">
+    <h2 class="mb-4">Cadastro de Informações Pessoais</h2>
+    <form id="form-cliente" >
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="nome_completo" class="form-label">Nome Completo</label>
+          <input type="text" class="form-control" id="nome_completo" name="nome_completo" required />
+        </div>
+        <div class="col-md-6">
+          <label for="cpf" class="form-label">CPF</label>
+          <input type="text" class="form-control" id="cpf" name="cpf" required />
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label for="cpf"><i class="fas fa-id-card"></i>CPF:</label>
-      <input type="text" id="cpf" name="cpf">
-    </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="telefone" class="form-label">Telefone</label>
+          <input type="tel" class="form-control" id="telefone" name="telefone" required />
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" required />
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label for="telefone"><i class="fas fa-phone"></i>Telefone:</label>
-      <input type="tel" id="telefone" name="telefone">
-    </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <label for="estado" class="form-label">Estado</label>
+          <input type="text" class="form-control" id="estado" name="estado" required />
+        </div>
+        <div class="col-md-4">
+          <label for="cidade" class="form-label">Cidade</label>
+          <input type="text" class="form-control" id="cidade" name="cidade" required />
+        </div>
+        <div class="col-md-4">
+          <label for="bairro" class="form-label">Bairro</label>
+          <input type="text" class="form-control" id="bairro" name="bairro" required />
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label for="email"><i class="fas fa-envelope"></i>Email:</label>
-      <input type="email" id="email" name="email">
-    </div>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="rua" class="form-label">Rua</label>
+          <input type="text" class="form-control" id="rua" name="rua" required />
+        </div>
+        <div class="col-md-3">
+          <label for="n_casa" class="form-label">Número</label>
+          <input type="text" class="form-control" id="n_casa" name="n_casa" required />
+        </div>
+        <div class="col-md-3">
+          <label for="cep" class="form-label">CEP</label>
+          <input type="text" class="form-control" id="cep" name="cep" required />
+        </div>
+      </div>
+      <button type="button" onclick="desbloquearEndereco()">Editar Endereço</button>
+      <script>
+        function desbloquearEndereco() {
+          document.getElementById('rua').readOnly = false;
+          document.getElementById('bairro').readOnly = false;
+          document.getElementById('cidade').readOnly = false;
+          document.getElementById('estado').readOnly = false;
+        }
+      </script>
+      
 
-    <div class="form-group">
-      <label for="cep"><i class="fas fa-map-pin"></i>CEP:</label>
-      <input type="text" id="cep" name="cep">
-    </div>
 
-    <div class="form-group">
-      <label for="rua"><i class="fas fa-road"></i>Rua:</label>
-      <input type="text" id="rua" name="rua">
-    </div>
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <label for="senha" class="form-label">Criar Senha de Acesso</label>
+          <input type="password" class="form-control" id="senha" name="senha" required />
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label for="numero"><i class="fas fa-hashtag"></i>Número:</label>
-      <input type="text" id="numero" name="numero">
-    </div>
+      <input type="submit" value="Enviar cadastro" class="enviar" id="btn-enviar"></input>
+    </form>
+  </div>
+  
+  <script src="./script/cadastro.js"></script>
 
-    <div class="form-group">
-      <label for="bairro"><i class="fas fa-map"></i>Bairro:</label>
-      <input type="text" id="bairro" name="bairro">
-    </div>
+  <script>
+    // Máscara para CPF: 000.000.000-00
+    function mascaraCPF(cpf) {
+      cpf = cpf.replace(/\D/g, ''); // Remove tudo que não é dígito
+      cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+      cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+      cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      return cpf;
+    }
+  
+    // Máscara para CEP: 00000-000
+    function mascaraCEP(cep) {
+      cep = cep.replace(/\D/g, '');
+      cep = cep.replace(/(\d{5})(\d{1,3})$/, '$1-$2');
+      return cep;
+    }
+  
+    // Aplica as máscaras enquanto digita
+    document.addEventListener('DOMContentLoaded', function () {
+      const cpfInput = document.getElementById('cpf');
+      const cepInput = document.getElementById('cep');
+  
+      cpfInput.addEventListener('input', function () {
+        this.value = mascaraCPF(this.value);
+      });
+  
+      cepInput.addEventListener('input', function () {
+        this.value = mascaraCEP(this.value);
+      });
+    });
+    function mascaraTelefone(telefone) {
+    telefone = telefone.replace(/\D/g, '');
 
-    <div class="form-group">
-      <label for="cidade"><i class="fas fa-city"></i>Cidade:</label>
-      <input type="text" id="cidade" name="cidade">
-    </div>
+    if (telefone.length > 10) {
+      // Celular com 9 dígitos
+      telefone = telefone.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+    } else {
+      // Telefone fixo
+      telefone = telefone.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+    }
 
-    <div class="form-group">
-      <label for="estado"><i class="fas fa-flag"></i>Estado:</label>
-      <input type="text" id="estado" name="estado">
-    </div>
+    return telefone;
+  }
 
-    <div class="form-group">
-      <label for="senha"><i class="fas fa-lock"></i>Senha:</label>
-      <input type="password" id="senha" name="senha">
-    </div>
+  // Aplica máscaras enquanto digita
+  document.addEventListener('DOMContentLoaded', function () {
+    const cpfInput = document.getElementById('cpf');
+    const cepInput = document.getElementById('cep');
+    const telefoneInput = document.getElementById('telefone');
 
-    <div class="form-group full-width">
-      <button type="submit"><i class="fas fa-user-plus"></i>Cadastrar</button>
-    </div>
-  </form>
+    cpfInput.addEventListener('input', function () {
+      this.value = mascaraCPF(this.value);
+    });
+
+    cepInput.addEventListener('input', function () {
+      this.value = mascaraCEP(this.value);
+    });
+
+    telefoneInput.addEventListener('input', function () {
+      this.value = mascaraTelefone(this.value);
+    });
+  });
+  </script>
+
+<script>
+  async function buscarEndereco(cep) {
+    try {
+      const resposta = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+      const dados = await resposta.json();
+
+      if (dados.erro) {
+        alert('CEP não encontrado.');
+        return;
+      }
+
+      // Preenche os campos
+      document.getElementById('rua').value = dados.logradouro;
+      document.getElementById('bairro').value = dados.bairro;
+      document.getElementById('cidade').value = dados.localidade;
+      document.getElementById('estado').value = dados.uf;
+
+      // Torna os campos readonly
+      document.getElementById('rua').readOnly = true;
+      document.getElementById('bairro').readOnly = true;
+      document.getElementById('cidade').readOnly = true;
+      document.getElementById('estado').readOnly = true;
+
+    } catch (error) {
+      console.error('Erro ao buscar CEP:', error);
+      alert('Erro ao buscar informações do CEP.');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const cepInput = document.getElementById('cep');
+
+    cepInput.addEventListener('blur', function () {
+      const cepLimpo = this.value.replace(/\D/g, '');
+      if (cepLimpo.length === 8) {
+        buscarEndereco(cepLimpo);
+      }
+    });
+  });
+</script>
+
+  
 </body>
 </html>
